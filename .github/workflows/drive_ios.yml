@@ -28,7 +28,7 @@ jobs:
                          -v 'device=${{ matrix.device }}' \
                          '$1 == device { print $2 }'
                      )
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+          xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
 
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
