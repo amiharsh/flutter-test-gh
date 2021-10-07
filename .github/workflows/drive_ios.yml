@@ -15,18 +15,19 @@ jobs:
 
   #  needs: test
     steps:
+      - run: sw_vers
       - name: List All Simulators
         run: xcrun xctrace list devices
 
       - name: Start Simulator
         run: |
           UDID=$(
-            xcrun xctrace list devices |
-            awk \
-              -F ' *[][]' \
-              -v 'device=${{ matrix.device }}' \
-              '$1 == device { print $2 }'
-          )
+                       xcrun xctrace list devices |
+                       awk \
+                         -F ' *[][]' \
+                         -v 'device=${{ matrix.device }}' \
+                         '$1 == device { print $2 }'
+                     )
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - uses: actions/checkout@v1
