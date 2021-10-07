@@ -18,12 +18,12 @@ void main() {
 
     test('starts app at 0', () async {
       expect(await driver?.getText(counterTextFinder), "0");
-    });
+    }, timeout:Timeout.none);
 
 
     test('increments the app counter', () async {
       await driver?.tap(buttonFinder);
       expect(await driver?.getText(counterTextFinder), "1");
-    });
+    }, timeout:Timeout.none);
   });
 }
