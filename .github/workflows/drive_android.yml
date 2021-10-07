@@ -1,0 +1,25 @@
+name: Deploy On Android
+
+on: workflow_dispatch
+
+jobs:
+  drive_android:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [21, 29]
+        target: [default]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - name: Run Flutter Driver Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: x86_64
+          profile: Nexus 6
+          script: flutter drive --target=test_driver/app.dart
