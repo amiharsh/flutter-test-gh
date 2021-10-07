@@ -13,9 +13,9 @@ jobs:
         with:
           java-version: '12.x'
       - run: flutter config --enable-web
-      - run: flutter config --enable-macos-desktop
+     # - run: flutter config --enable-macos-desktop
       - run: flutter pub get
-      - run: flutter build macos --release
+     # - run: flutter build macos --release
       - run: flutter build apk --debug --split-per-abi
 
       - name:  Create A Release APK
