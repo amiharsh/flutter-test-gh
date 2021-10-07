@@ -16,12 +16,12 @@ jobs:
   #  needs: test
     steps:
       - name: List All Simulators
-        run: xcrun xctrace -s
+        run: xcrun xctrace list devices
 
       - name: Start Simulator
         run: |
           UDID=$(
-            xcrun xctrace -s |
+            xcrun xctrace list devices |
             awk \
               -F ' *[][]' \
               -v 'device=${{ matrix.device }}' \
