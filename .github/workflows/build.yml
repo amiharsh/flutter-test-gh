@@ -57,7 +57,7 @@ jobs:
           artifacts: "build/app/outputs/apk/debug/*.apk,build/macos/Build/Products/Release/*.app"
           token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.content }}
-      - run: flutter web build
+      - run: flutter build web
 
       - uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
