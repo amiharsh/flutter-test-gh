@@ -13,7 +13,7 @@ jobs:
 
     runs-on: macos-latest
 
-    needs: test
+  #  needs: test
     steps:
       - name: List All Simulators
         run: xcrun instruments -s
