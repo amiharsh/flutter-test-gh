@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [21]
+        api-level: [29]
         target: [default]
     steps:
       - uses: actions/checkout@v2
@@ -43,6 +43,9 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
+      -  name: List Android Devices
+         run: avdmanager list
+
       - name: Run Flutter Driver Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -52,5 +55,5 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          profile: Nexus 6
+          profile: Pixel 4 XL
           script: flutter drive --target=test_driver/app.dart

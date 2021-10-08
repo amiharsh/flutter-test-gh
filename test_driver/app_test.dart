@@ -19,7 +19,6 @@ void main() {
     test('starts app at 0', () async {
         await driver?.runUnsynchronized(() async {
           expect(await driver?.getText(counterTextFinder), "0");
-          print('Button Found');
         });
     }, timeout:Timeout.none);
 
