@@ -17,13 +17,18 @@ void main() {
     });
 
     test('starts app at 0', () async {
-      expect(await driver?.getText(counterTextFinder), "0");
+        await driver?.runUnsynchronized(() async {
+          expect(await driver?.getText(counterTextFinder), "0");
+          print('Button Found');
+        });
     }, timeout:Timeout.none);
 
 
     test('increments the app counter', () async {
       await driver?.tap(buttonFinder);
-      expect(await driver?.getText(counterTextFinder), "1");
+      await driver?.runUnsynchronized(() async {
+        expect(await driver?.getText(counterTextFinder), "1");
+      });
     }, timeout:Timeout.none);
   });
 }
