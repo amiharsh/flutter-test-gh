@@ -20,7 +20,7 @@ jobs:
 
       - name: Start Simulator
         run: |
-          UDID=$(xcrun simctl list devices -j | '.devices | to_entries | map(select(.key | startswith("iOS"))) | .[].value[].udid')
+          UDID=$( xcrun simctl list devices -j | '.devices | to_entries | map(select(.key | startswith("iOS"))) | .[].value[].udid' )
       #    xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
 
      # - uses: actions/checkout@v1
