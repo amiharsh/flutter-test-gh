@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - "iPhone 8 (14.4)"
+          - "iPhone 11 (14.4)"
       fail-fast: false
 
     runs-on: macos-latest
@@ -20,13 +20,6 @@ jobs:
 
       - name: Start Simulator
         run: |
-          UDID=$(
-                       xcrun xctrace list devices |
-                       awk \
-                         -F ' *[][]' \
-                         -v 'device=${{ matrix.device }}' \
-                         '$1 == device { print $2 }'
-                     )
           xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
 
       - uses: actions/checkout@v1
@@ -35,4 +28,4 @@ jobs:
           channel: 'stable'
 
       - name: Run Flutter Driver Tests
-        run: flutter drive --target=test_driver/app.dart
+        run: flutter test integration_test/app_test.dart

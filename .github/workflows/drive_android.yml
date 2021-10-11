@@ -1,11 +1,10 @@
-name: Deploy On Android
+name: Integrating Testing
 
 on: workflow_dispatch
 
 jobs:
-
   drive_android:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         api-level: [29]

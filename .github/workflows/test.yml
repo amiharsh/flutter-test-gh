@@ -1,13 +1,16 @@
 
-name: Test, Build & Deploy
-on: workflow_dispatch
+name: Test on Development & Testing Branch (PR)
+on:
+  pull_request:
+    branches:
+      - development
+      - testing
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      #Setup Java Environment
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'

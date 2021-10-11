@@ -24,9 +24,8 @@ jobs:
           name: gitversion
           path: version.txt
 
-
   deploy:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     name: Build APK & Web
     steps:
       - uses: actions/checkout@v1
@@ -46,10 +45,10 @@ jobs:
         with:
           java-version: '12.x'
       - run: flutter config --enable-web
-     # - run: flutter config --enable-macos-desktop
       - run: flutter pub get
-     # - run: flutter build macos --release
-      - run: flutter build apk --debug --split-per-abi
+     # - run: flutter build android release
+      - run: flutter build apk --release --split-per-abi
+      - run: flutter build appbundle
 
       - name:  Create A Release APK
         uses: ncipollo/release-action@v1
