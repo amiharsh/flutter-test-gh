@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - "iPhone 11 (14.4)"
+          - "iPhone 8 (14.4)"
       fail-fast: false
 
     runs-on: macos-latest
@@ -20,12 +20,13 @@ jobs:
 
       - name: Start Simulator
         run: |
-          xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
+          xcrun simctl list devices -j
+      #    xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
 
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
+     # - uses: actions/checkout@v1
+     # - uses: subosito/flutter-action@v1
+     #   with:
+     #     channel: 'stable'
 
-      - name: Run Flutter Driver Tests
-        run: flutter test integration_test/app_test.dart
+     # - name: Run Flutter Driver Tests
+     #   run: flutter drive --target=test_driver/app.dart
