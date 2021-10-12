@@ -29,7 +29,7 @@ jobs:
     needs: [version]
     name: Build APK & Web
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
@@ -54,7 +54,7 @@ jobs:
       - name:  Create A Release APK
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/debug/*.apk,build/macos/Build/Products/Release/*.app"
+          artifacts: "build/app/outputs/apk/debug/*.apk"
           token: ${{ secrets.GH_TOKEN }}
           tag: ${{ steps.version.outputs.content }}
       - run: flutter build web
