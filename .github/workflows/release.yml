@@ -12,8 +12,7 @@ jobs:
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.7
         with:
-         versionSpec: '6.x'
-         includePrerelease: true
+         versionSpec: '5.5.0'
       - name: Use GitVersion
         id: gitversion
         uses: gittools/actions/gitversion/execute@v0.9.7
@@ -27,6 +26,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: [version]
     name: Build APK & Web
     steps:
       - uses: actions/checkout@v1
