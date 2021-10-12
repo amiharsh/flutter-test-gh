@@ -125,10 +125,10 @@ class Home extends StatefulWidget {
   final String title;
 
   @override
-  State<Home> createState() => _MyHomePageState();
+  State<Home> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<Home> {
+class _HomePageState extends State<Home> {
   int _counter = 0;
 
   void _incrementCounter() {
