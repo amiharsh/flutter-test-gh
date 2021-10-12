@@ -9,7 +9,7 @@ const RESOURCES = {
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/AssetManifest.json": "2efbb41d7877d10aac9d091f58ccd7b9",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"main.dart.js": "80e3639298ead0e60b71812967151e64",
+"main.dart.js": "16514170cdc82f70391f3b8a0e8aaaa7",
 "index.html": "585dd791590c5fd3c0e97de0794a4683",
 "/": "585dd791590c5fd3c0e97de0794a4683"
 };
