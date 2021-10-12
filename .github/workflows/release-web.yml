@@ -1,0 +1,26 @@
+name: Release On Web
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build Web
+    steps:
+      - name: Checkout Repo. with fetch depth
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: flutter config --enable-web
+      - run: flutter pub get
+
+      - run: flutter build web
+      - uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          token: ${{ secrets.GH_TOKEN }}
+          folder: build/web
