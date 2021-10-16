@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         device:
-          - "iPhone 11 (14.4)"
+          - "iPhone 11"
       fail-fast: false
 
     runs-on: macos-latest
@@ -18,9 +18,11 @@ jobs:
       - name: List All Simulators
         run: xcrun xctrace list devices
 
-      - name: Start Simulator
-        run: |
-          xcrun simctl boot 6411260A-0960-47A1-9F3B-D03A0406D26F
+      - name: Set UDID of device  
+        run: UDID=$(xcrun xctrace list devices  | awk -F"[()]" -v dev="$${{ matrix.device }}" '$0~dev{print $(NF-1) }')
+
+      - name: Check UDID
+        run: echo $UDID
 
       - uses: actions/checkout@v2
 
