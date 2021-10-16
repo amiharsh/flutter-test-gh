@@ -23,6 +23,9 @@ jobs:
 
       - name: Check UDID
         run: echo $UDID
+        
+      - name: Start Simulator
+        run: xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - uses: actions/checkout@v2
 
