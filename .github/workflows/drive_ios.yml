@@ -19,7 +19,7 @@ jobs:
         run: xcrun xctrace list devices
 
       - name: Set UDID of device  
-        run: UDID=$(xcrun xctrace list devices  | awk -F"[()]" -v "dev=${{ matrix.device }}" '$0~dev{print $(NF-1) }')
+        run: UDID=$(xcrun xctrace list devices  | awk -F"[()]" -v "dev=iPhone 11" '$0~dev{print $(NF-1) }')
 
       - name: Check UDID
         run: echo "$UDID"
