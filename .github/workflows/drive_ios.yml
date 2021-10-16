@@ -22,7 +22,7 @@ jobs:
         run: UDID=$(xcrun xctrace list devices  | awk -F"[()]" -v "dev=${{ matrix.device }}" '$0~dev{print $4 }')
 
       - name: Check UDID
-        run: echo $UDID
+        run: echo "$UDID"
         
       - name: Start Simulator
         run: xcrun simctl boot "${UDID:?No Simulator with this name found}"
