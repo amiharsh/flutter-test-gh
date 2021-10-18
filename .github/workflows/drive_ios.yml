@@ -29,6 +29,12 @@ jobs:
         run: xcrun simctl boot "${{ matrix.device }}"
 
       - uses: actions/checkout@v2
+      
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v2
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.OS }}-flutter
 
       - uses: subosito/flutter-action@v1
         with:
