@@ -24,9 +24,6 @@ jobs:
 
       - name: Check UDID
         run: echo "$UDID"
-        
-      - name: Start Simulator
-        run: xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - name: Start Simulator
         run: xcrun simctl boot "${{ matrix.device }}"
