@@ -1,0 +1,19 @@
+name: Run SSH command
+on:
+  workflow_dispatch:
+jobs:
+  run-ssh-command:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+
+      - name: Run SSH command
+        run: |
+          ssh -t ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "${{ inputs.command }}"
