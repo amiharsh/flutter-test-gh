@@ -1,6 +1,14 @@
 name: Run SSH command
 on:
   workflow_dispatch:
+   inputs:
+      name:
+        type: string
+        description: 'Run Command'
+        default: 'echo Hello'
+        required: true
+      message:
+        required: true
 jobs:
   run-ssh-command:
     runs-on: ubuntu-latest
